@@ -7,12 +7,15 @@ I run this on a Raspberry Pi 2B+, I like to cross-compile from my AMD64
 computer:
 
 ```bash
-GOARCH=arm go build -ldflags "-s -w" -o checktemp-arm
+export GOARCH=arm
+go build -ldflags "-s -w" -o checktemp-arm
 scp checktemp-arm raspberry-pi2:~/checktemp
 ```
 
 ## Usage
-Just run the program. If you need it to keep running, make a Systemd unit.
+Just run the program. If you need it to keep running, make a Systemd unit. It
+will start listening on port `8080` by hard-coded default. Feel free to change
+the port as per your needs.
 ```bash
 ./checktemp
 ```
@@ -20,6 +23,9 @@ Just run the program. If you need it to keep running, make a Systemd unit.
 ### Example response
 I only have a single sensor connected, if you have more, you get data from all
 of them. Each will be an array element. Here's the reading from my thermometer:
+```bash
+curl -s localhost:8080 | jq
+```
 ```json
 {
   "data": [
