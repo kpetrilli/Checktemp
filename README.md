@@ -6,16 +6,14 @@ data as JSON over HTTP. I guess you can call this a "temperature API"?
 I run this on a Raspberry Pi 2B+, I like to cross-compile from my AMD64
 computer:
 
-```
-bash
+```bash
 GOARCH=arm go build -ldflags "-s -w" -o checktemp-arm
 scp checktemp-arm raspberry-pi2:~/checktemp
 ```
 
 ## Usage
 Just run the program. If you need it to keep running, make a Systemd unit.
-```
-bash
+```bash
 ./checktemp
 ```
 
