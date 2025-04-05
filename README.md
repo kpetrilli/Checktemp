@@ -17,6 +17,20 @@ Just run the program. If you need it to keep running, make a Systemd unit.
 ./checktemp
 ```
 
+### Example response
+I only have a single sensor connected, if you have more, you get data from all
+of them. Each will be an array element. Here's the reading from my thermometer:
+```json
+{
+  "data": [
+    {
+      "sensor": 0,
+      "temperature": 19.875
+    }
+  ]
+}
+```
+
 ## License
 This is Free and Open Source Software, made within a Saturday evening and
 available for you as BSD-3 Clause license. Check the license file for legal
